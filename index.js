@@ -10,7 +10,7 @@ const userRoute = require ("./routes/user.route")
 // middleware         
 
 const corsOptions = {
-  origin: "*",     // this allows request from any origin
+  origin: "https://frontend-tasquee.vercel.app/",     // this allows request from any origin
   credentials: true,                   // this allows cookies, authorization headers, TLS certi..
   optionSuccessStatus: 200,           // set status code 200 for successful request..
 }

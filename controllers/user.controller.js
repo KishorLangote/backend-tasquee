@@ -34,7 +34,7 @@ const { generateTokenAndSaveInCookies } = require("../jwt/token")
 
     const user = await User.findOne({ email });
     if (user) {
-      res.status(400).json({ errors: "User already registered." });
+     return res.status(400).json({ errors: "User already registered." });
     }
 
     // hash password
@@ -45,7 +45,7 @@ const { generateTokenAndSaveInCookies } = require("../jwt/token")
     await newUser.save(); // new user saved in the db
     if (newUser) {
       const token = await generateTokenAndSaveInCookies(newUser._id, res);
-      res
+     return res
         .status(201)
         .json({ message: "User registered successfully", newUser, token });
     }
@@ -73,7 +73,7 @@ const { generateTokenAndSaveInCookies } = require("../jwt/token")
     // create token
     const token = await generateTokenAndSaveInCookies(user._id, res);
     
-    res
+    return res
       .status(200)
       .json({ message: "User logged in successfully", user, token });
   } catch (error) {
